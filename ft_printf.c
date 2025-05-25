@@ -6,7 +6,7 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:19:03 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/05/25 15:52:22 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/05/25 20:03:53 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	i = 0;
 	count = 0;
+	if (!format)
+		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
