@@ -6,31 +6,31 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:19:03 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/05/11 20:10:12 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:52:22 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *forme, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	size_t	i;
-	size_t	count;
+	int		i;
+	int		count;
 
+	va_start(args, format);
 	i = 0;
 	count = 0;
-	va_start(args, forme);
-	while (forme[i])
+	while (format[i])
 	{
-		if (forme[i] == '%')
+		if (format[i] == '%')
 		{
 			i++;
-			count += ft_conv(forme[i], args);
+			count += ft_conv(format[i], args);
 		}
 		else
 		{
-			ft_putchar(forme[i]);
+			ft_putchar(format[i]);
 			count ++;
 		}
 		i++;

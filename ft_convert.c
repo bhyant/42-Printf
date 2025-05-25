@@ -6,26 +6,28 @@
 /*   By: tbhuiyan <tbhuiyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 10:19:41 by tbhuiyan          #+#    #+#             */
-/*   Updated: 2025/05/11 19:51:32 by tbhuiyan         ###   ########.fr       */
+/*   Updated: 2025/05/25 15:56:37 by tbhuiyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int	ft_putstr(const char *str)
+int	ft_putstr(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
+	if (!str)
+		str = "(null)";
 	while (str[i])
 	{
-		ft_putchar(str[i]);
+		write(1, &str[i], 1);
 		i++;
 	}
 	return (i);
@@ -33,30 +35,30 @@ int	ft_putstr(const char *str)
 
 int	ft_putnbr(int n)
 {
-	long int	nbr;
-	size_t		count;
+	long int	nb;
+	int			count;
 
+	nb = n;
 	count = 0;
-	nbr = n;
-	if (nbr < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-');
 		count++;
-		nbr *= -1;
+		nb *= -1;
 	}
-	if (nbr > 9)
-		count += ft_putnbr(nbr / 10);
-	count += ft_putchar((nbr % 10) + '0');
+	if (nb > 9)
+		count += ft_putnbr(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
 	return (count);
 }
 
-int	ft_unsigned_putnbr(unsigned int n)
+int	ft_putnbr_unsigned(unsigned int n)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
 	if (n > 9)
-		count += ft_unsigned_putnbr(n / 10);
+		count += ft_putnbr(n / 10);
 	count += ft_putchar((n % 10) + '0');
 	return (count);
 }
