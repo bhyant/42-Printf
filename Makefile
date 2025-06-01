@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -MMD
 
 SRCS = ft_convert.c \
 	ft_convert2.c \
@@ -37,3 +37,7 @@ fclean: clean
 	@rm -f ${NAME}
 
 re: fclean all
+
+.PHONY: re all clean fclean
+
+-include $(OBJS:.o=.d)

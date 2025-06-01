@@ -19,9 +19,9 @@ int	ft_puthex(char c, unsigned long n)
 
 	count = 0;
 	if (c == 'x')
-		hex = "0123456789abcdef";
+		hex = LOWER_BASE;
 	else if (c == 'X')
-		hex = "0123456789ABCDEF";
+		hex = UPPER_BASE;
 	if (n == 0)
 	{
 		ft_putchar('0');

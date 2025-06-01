@@ -14,6 +14,9 @@
 
 # define FT_PRINTF_H
 
+# define LOWER_BASE "0123456789abcdef"
+# define UPPER_BASE "0123456789ABCDEF"
+
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
